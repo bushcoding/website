@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 
 :root {
+    /* Colors */
     --C1: #9DC08B;
     --C2: #609966;
     --C3: #333;
     --C4: #EDF1D6;
+    /* Measures */
+    --F35: 35px;
+    --F30: 30PX;
+    --F25: 25PX;
+    --F20: 20px;
+    --F17: 17px;
+    --F15: 15px;
+    --DMM: 15PX;
+
 }
+
+/* General */
 
 html {
     scroll-behavior: smooth;
@@ -17,7 +29,6 @@ body {
     padding: 0;
 }
 
-/* Navbar Section */
 a {
     text-decoration: none;
 }
@@ -25,6 +36,36 @@ a {
 ul {
     list-style: none;
 }
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.floating {
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+
+/* Navbar Section */
 
 .navbar {
     background-color: var(--C3);
@@ -39,8 +80,8 @@ ul {
 }
 
 .navbar .navbar-img img {
-    width: 80px;
-    height: 80px;
+    margin: 10px;
+    width: 100px;
 }
 
 .navbar .navbar-il ul {
@@ -84,15 +125,19 @@ ul {
 .navbar-el a {
     background-color: var(--C2);
     color: var(--C4);
-    border-radius: 5px;
-    border: 3px solid var(--C2);
-    font-size: 20px;
-    padding: 3px 8px;
+    font-size: 25px;
     transition: 0.3s;
 }
 
 .navbar-el a:hover {
-    background-color: var(--C1);
+    color: var(--C3);
+    font-size: 23px;
+}
+
+@media screen and (max-width: 855px) {
+    .navbar {
+        display: none;
+    }
 }
 
 /* Home Section */
@@ -104,9 +149,20 @@ ul {
     width: auto;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
     color: var(--C4);
     text-align: center;
+}
+
+.home-content {
+    width: 500px;
+}
+
+.home-content p {
+    color: var(--C4);
+    font-size: var(--F35);
+    margin: 0;
 }
 
 .home a {
@@ -121,26 +177,33 @@ ul {
     font-size: 25px;
 }
 
-.home-content {
-    width: 500px;
-}
-
-.home-content p {
-    color: var(--C4);
-    
-    font-size: 35px;
-    margin: 0;
-}
-
 .home-img img {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
 }
 
-@media (max-width: 768px) {
-    .home {
-        background-image: none;
-        background-color: var(--C2);
+@media (max-width: 799px) {
+    .home-content {
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 490px) {
+    .home-img img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .home-content p {
+        font-size: 28px;
+    }
+
+    .home a {
+        font-size: 23px;
+    }
+
+    .home a:hover {
+        font-size: 18px;
     }
 }
 
@@ -156,11 +219,12 @@ ul {
 .about-content {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
 }
 
 .about-content-text {
-    padding: 20px;
+    margin: var(--DMM);
     box-sizing: border-box;
     width: 500px;
     height: auto;
@@ -168,25 +232,41 @@ ul {
 }
 
 .about-content-text h1 {
-    font-size: 40px;
+    font-size: var(--F35);
 }
 
 .about-content-text p {
-    font-size: 20px;
+    font-size: var(--F20);
 }
 
-.about-content-img {
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: hidden;
-
-}
-
-.about-content-img img {
+.about-content-iframe {
+    margin: var(--DMM);
     border-radius: 10px;
+}
+
+.about-content-iframe iframe {
     width: 300px;
-    height: 300px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5)
+    height: 400px;
+}
+
+@media (max-width: 490px) {
+    .about-content-img img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-content-text h1 {
+        font-size: 30px;
+    }
+
+    .about-content-text p {
+        font-size: var(--F17);
+    }
+
+    .about-content-iframe iframe {
+        width: 250px;
+        height: 350px;
+    }
 }
 
 /* Services Section */
@@ -198,31 +278,46 @@ ul {
 }
 
 .services-content h1 {
-    font-size: 40px;
+    font-size: var(--F35);
 }
 
 .services-content-cards {
     display: flex;
     justify-content: space-around;
-
+    flex-wrap: wrap;
 }
 
 .services-content-card {
     background-color: var(--C3);
     color: var(--C4);
     padding: 20px;
-    margin: 0 15px;
-    width: 500px;
+    margin: var(--DMM);
+    width: 350px;
+    height: auto;
     border-radius: 10px;
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5)
 }
 
 .services-content-card h1 {
-    font-size: 20px;
+    font-size: var(--F25);
 }
 
 .services-content-card p {
-    font-size: 15px;
+    font-size: var(--F20);
+}
+
+@media (max-width: 490px) {
+    .services-content h1 {
+        font-size: var(--F30);
+    }
+
+    .services-content-card h1 {
+        font-size: var(--F20);
+    }
+
+    .services-content-card p {
+        font-size: var(--F17);
+    }
 }
 
 /* Products Section */
@@ -234,12 +329,22 @@ ul {
 
 .products-content h1 {
     color: var(--C3);
-    font-size: 40px;
+    font-size: var(--F35);
 }
 
 .products-content-text p {
     color: var(--C3);
-    font-size: 20px;
+    font-size: var(--F20);
+}
+
+@media (max-width: 490px) {
+    .products-content h1 {
+        font-size: var(--F30);
+    }
+
+    .products-content-text p {
+        font-size: var(--F17);
+    }
 }
 
 /* Contact Section */
@@ -257,11 +362,11 @@ ul {
 }
 
 .contact .contact-content h1 {
-    font-size: 40px;
+    font-size: var(--F35);
 }
 
 .contact .contact-content p {
-    font-size: 20px;
+    font-size: var(--F20);
 }
 
 form {
@@ -305,21 +410,25 @@ button:hover {
     background-color: var(--C1);
 }
 
+@media (max-width: 490px) {
+    .contact-content {
+        width: 350px;
+    }
+
+    .contact .contact-content h1 {
+        font-size: var(--F30);
+    }
+
+    .contact .contact-content p {
+        font-size: var(--F17);
+    }
+}
+
+/* Footer */
 
 .footer {
     background-color: var(--C3);
     color: var(--C4);
     text-align: center;
     padding: 15px 0;
-}
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
